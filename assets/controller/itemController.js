@@ -254,8 +254,8 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
 
 });
 
-/*
-/!*search item*!/
+
+/*search item*/
 $("#item-search").on('click', () => {
     let itemSearchCode = $("#item-search-code").val();
 
@@ -311,9 +311,9 @@ $("#item-search").on('click', () => {
         }
     };
 
-    http.open("GET", `http://localhost:8081/posSystem/item?itemCode=${itemSearchCode}`, true);
+    http.open("GET", `http://localhost:8080/pos_system/api/v1/items/${itemSearchCode}`, true);
     http.send();
-});*/
+});
 
 
 
