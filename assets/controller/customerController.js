@@ -101,7 +101,7 @@ $("#customer-save").click(function (){
                     'Customer saved successfully.',
                     'success'
                 );
-                //fetchCustomerData();
+                fetchCustomerData();
                 clearFields();
                 fetchCustomerId();
                 console.log("load tables saved click");
@@ -192,7 +192,7 @@ $("#customer-update").on('click', () => {
                     'Customer updated successfully.',
                     'success'
                 )
-                //fetchCustomerData();
+                fetchCustomerData();
                 clearFields();
                 fetchCustomerId();
             } else {
@@ -212,15 +212,24 @@ $("#customer-update").on('click', () => {
 
 
 /*delete customer*/
-/*$("#customer-delete").on('click', () => {
+$("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
 
-    console.log("customer ID", customerIdValue);
+    if (!customerIdValue) {
+        Swal.fire(
+            'Input Required',
+            'Please enter a valid customer ID to delete.',
+            'warning'
+        );
+        return;
+    }
+
+    console.log("customer ID to delete:", customerIdValue);
 
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
-            if (http.status === 200) {
+            if (http.status === 200 || http.status === 204) {
                 console.log("Customer deleted successfully");
                 Swal.fire(
                     'Deleted Successfully!',
@@ -231,20 +240,25 @@ $("#customer-update").on('click', () => {
                 clearFields();
                 fetchCustomerId();
             } else {
-                console.log("Failed to delete");
-                console.log("HTTP Status: ", http.status);
+                console.error("Failed to delete customer.");
+                console.error("HTTP Status:", http.status);
+                console.error("Response:", http.responseText);  // Show detailed response
+
                 Swal.fire(
+                    'error',
                     'Failed!',
-                    'Customer could not be deleted.',
-                    'error'
+                    'Customer could not be deleted. Please try again.',
                 );
             }
         }
     };
 
-    http.open("DELETE", `http://localhost:8080/pos_system/api/v1/customers=${customerIdValue}`, true);
+    // Send the DELETE request with the customer ID in the path
+    http.open("DELETE", `http://localhost:8080/pos_system/api/v1/customers/${customerIdValue}`, true);
     http.send();
-});*/
+});
+
+
 
 
 function fetchCustomerData() {
