@@ -293,7 +293,7 @@ $("#customer-tbl-tbody").on('click', 'tr', function() {
     $("#email").val(email);
 });
 
-/*$("#customer-search").on('click', () => {
+$("#customer-search").on('click', () => {
     let customerSearchId = $("#customer-search-by-id").val();
 
     if (!customerSearchId) {
@@ -352,9 +352,9 @@ $("#customer-tbl-tbody").on('click', 'tr', function() {
         }
     };
 
-    http.open("GET", `http://localhost:8081/posSystem/customer?customerId=${customerSearchId}`, true);
+    http.open("GET", `http://localhost:8080/pos_system/api/v1/customers/${customerSearchId}`, true);
     http.send();
-});*/
+});
 
 
 
