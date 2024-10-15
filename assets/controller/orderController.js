@@ -1,14 +1,13 @@
-/*
 let customerData = [];
 let itemData = [];
 let items = [];
 
 window.addEventListener('load', () => {
-    loadCustomerIDs();
-    loadItemCodes();
+    //loadCustomerIDs();
+    //loadItemCodes();
     setOrderDate();
-    fetchOrderId();
-    fetchOrderData();
+    //fetchOrderId();
+    //fetchOrderData();
 });
 
 function setOrderDate() {
@@ -16,7 +15,7 @@ function setOrderDate() {
     document.getElementById('order-date').value = today;
 }
 
-function fetchOrderId() {
+/*function fetchOrderId() {
     fetch("http://localhost:8081/posSystem/order?action=generateOrderId")
         .then(response => response.json())
         .then(orderId => {
@@ -24,9 +23,9 @@ function fetchOrderId() {
             console.log(orderId);
         })
         .catch(error => console.error("Error fetching order ID:", error));
-}
+}*/
 
-function loadItemCodes() {
+/*function loadItemCodes() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
@@ -50,9 +49,9 @@ document.getElementById('itemCodeOption').addEventListener('change', function() 
         document.getElementById('set-order-form-item-price').value = selectedItem.unitPrice;
         document.getElementById('set-item-qty-on-hand').value = selectedItem.qtyOnHand;
     }
-});
+});*/
 
-function loadCustomerIDs() {
+/*function loadCustomerIDs() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
@@ -65,9 +64,9 @@ function loadCustomerIDs() {
     };
     http.open("GET", "http://localhost:8081/posSystem/customer", true);
     http.send();
-}
+}*/
 
-document.getElementById('custIdOption').addEventListener('change', function() {
+/*document.getElementById('custIdOption').addEventListener('change', function() {
     const selectedCustomerId = this.value;
     const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
 
@@ -75,9 +74,9 @@ document.getElementById('custIdOption').addEventListener('change', function() {
         document.getElementById('set-customer-name').value = selectedCustomer.name;
         document.getElementById('set-customer-email').value = selectedCustomer.email;
     }
-});
+});*/
 
-document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+/*document.getElementById('add-to-cart-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     const itemName = document.getElementById('set-order-form-item-name').value;
     const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
@@ -367,7 +366,7 @@ $("#order-search").on('click',() =>{
 
     http.open("GET", `http://localhost:8081/posSystem/order?orderId=${orderSearchId}`, true);
     http.send();
-})
+})*/
 
 
 
@@ -376,4 +375,3 @@ $("#order-search").on('click',() =>{
 
 
 
-*/
