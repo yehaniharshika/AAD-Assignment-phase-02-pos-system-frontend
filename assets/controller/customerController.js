@@ -121,7 +121,6 @@ $("#customer-save").click(function (){
 });
 
 /*update customer*/
-/*
 $("#customer-update").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
     var customerNameValue = $('#customer-name').val();
@@ -205,15 +204,15 @@ $("#customer-update").on('click', () => {
         }
     };
 
-    http.open("PUT", `http://localhost:8081/posSystem/customer?customerId=${customerIdValue}`, true);
+    http.open("PUT", `http://localhost:8080/pos_system/api/v1/customers/${customerIdValue}`, true);
     http.setRequestHeader("content-type", "application/json");
     http.send(customerJson);
 
-    generateCustomerId();
     $("#customer-reset").click();
 
 });
 
+/*
 /!*delete customer*!/
 $("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();

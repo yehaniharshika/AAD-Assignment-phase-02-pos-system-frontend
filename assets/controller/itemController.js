@@ -1,4 +1,5 @@
-/*import {item_db} from "../db/db.js";*/
+/*
+/!*import {item_db} from "../db/db.js";*!/
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
@@ -18,7 +19,7 @@ function fetchItemCode() {
         })
         .catch(error => console.error("Error fetching item Code ", error));
 }
-/*save item*/
+/!*save item*!/
 $("#item-save").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     var itemNameValue = $('#item-name').val();
@@ -93,7 +94,7 @@ $("#item-save").on('click', () => {
     http.send(itemJson);
 });
 
-/*update item*/
+/!*update item*!/
 $("#item-update").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     var itemNameValue = $('#item-name').val();
@@ -246,7 +247,7 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
 
 });
 
-/*search item*/
+/!*search item*!/
 $("#item-search").on('click', () => {
     let itemSearchCode = $("#item-search-code").val();
 
@@ -314,3 +315,4 @@ $("#item-search").on('click', () => {
 
 
 
+*/

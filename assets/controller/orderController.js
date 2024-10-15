@@ -1,3 +1,4 @@
+/*
 let customerData = [];
 let itemData = [];
 let items = [];
@@ -375,3 +376,4 @@ $("#order-search").on('click',() =>{
 
 
 
+*/
