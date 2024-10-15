@@ -24,7 +24,7 @@ function fetchItemCode() {
         .catch(error => console.error("Error fetching item Code ", error));
 }
 /*save item*/
-/*$("#item-save").on('click', () => {
+$("#item-save").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     var itemNameValue = $('#item-name').val();
     var unitPriceValue = $('#unit-price').val();
@@ -78,7 +78,7 @@ function fetchItemCode() {
                     'Item saved successfully.',
                     'success'
                 );
-                fetchItemData();
+                //fetchItemData();
                 clearFields();
                 fetchItemCode();
 
@@ -93,11 +93,17 @@ function fetchItemCode() {
 
         }
     }
-    http.open("POST","http://localhost:8081/posSystem/item",true);
+    http.open("POST","http://localhost:8080/pos_system/api/v1/items",true);
     http.setRequestHeader("content-type","application/json");
     http.send(itemJson);
-});*/
+});
 
+function clearFields() {
+    $("#item-code").val('');
+    $("#item-name").val('');
+    $("#unit-price").val('');
+    $("#qty-on-hand").val('');
+}
 /*
 /!*update item*!/
 $("#item-update").on('click', () => {
