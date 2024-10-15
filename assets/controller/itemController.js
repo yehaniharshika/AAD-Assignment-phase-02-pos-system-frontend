@@ -5,7 +5,7 @@ const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
 // Call the function when the page loads or when you need to generate a new code
 window.addEventListener('load', () => {
-    //fetchItemData();
+    fetchItemData();
     fetchItemCode();
 });
 
@@ -78,7 +78,7 @@ $("#item-save").on('click', () => {
                     'Item saved successfully.',
                     'success'
                 );
-                //fetchItemData();
+                fetchItemData();
                 clearFields();
                 fetchItemCode();
 
@@ -157,7 +157,7 @@ $("#item-update").on('click', () => {
                     'Item updated successfully.',
                     'success'
                 )
-                //fetchItemData();
+                fetchItemData();
                 clearFields();
                 fetchItemCode();
             } else {
@@ -204,7 +204,7 @@ $("#item-delete").on('click', () => {
 
     http.open("DELETE", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
     http.send();
-});
+});*/
 
 
 function fetchItemData() {
@@ -220,10 +220,11 @@ function fetchItemData() {
             }
         }
     };
-    http.open("GET", "http://localhost:8081/posSystem/item", true);
+    http.open("GET", "http://localhost:8080/pos_system/api/v1/items", true);
     http.send();
 }
-function loadTable(itemData) {
+
+/*function loadTable(itemData) {
 
     $("#item-tbl-tbody").empty();
 
@@ -239,12 +240,6 @@ function loadTable(itemData) {
     });
 }
 
-function clearFields() {
-    $("#item-code").val('');
-    $("#item-name").val('');
-    $("#unit-price").val('');
-    $("#qty-on-hand").val('');
-}
 
 $("#item-tbl-tbody").on('click', 'tr', function() {
     let itemCode = $(this).find(".item-code-value").text();
@@ -257,8 +252,9 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
     $("#unit-price").val(unitPrice);
     $("#qty-on-hand").val(qtyOnHand);
 
-});
+});*/
 
+/*
 /!*search item*!/
 $("#item-search").on('click', () => {
     let itemSearchCode = $("#item-search-code").val();
@@ -317,8 +313,7 @@ $("#item-search").on('click', () => {
 
     http.open("GET", `http://localhost:8081/posSystem/item?itemCode=${itemSearchCode}`, true);
     http.send();
-});
-*/
+});*/
 
 
 
