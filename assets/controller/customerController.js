@@ -192,7 +192,7 @@ $("#customer-update").on('click', () => {
                     'Customer updated successfully.',
                     'success'
                 )
-                fetchCustomerData();
+                //fetchCustomerData();
                 clearFields();
                 fetchCustomerId();
             } else {
@@ -207,8 +207,6 @@ $("#customer-update").on('click', () => {
     http.open("PUT", `http://localhost:8080/pos_system/api/v1/customers/${customerIdValue}`, true);
     http.setRequestHeader("content-type", "application/json");
     http.send(customerJson);
-
-    $("#customer-reset").click();
 
 });
 
