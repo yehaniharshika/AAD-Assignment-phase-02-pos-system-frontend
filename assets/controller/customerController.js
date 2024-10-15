@@ -7,7 +7,7 @@ const addressRegexPattern = new RegExp("[0-9]{1,}\\/[A-Z]\\s[a-zA-Z]+$|[0-9]{1,}
 /*load when page is start*/
 window.addEventListener('load', () => {
     fetchCustomerId();
-    //fetchCustomerData();
+    fetchCustomerData();
 });
 
 function fetchCustomerId() {
@@ -247,7 +247,7 @@ $("#customer-update").on('click', () => {
 });*/
 
 
-/*function fetchCustomerData() {
+function fetchCustomerData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
@@ -260,11 +260,11 @@ $("#customer-update").on('click', () => {
             }
         }
     };
-    http.open("GET", "http://localhost:8081/posSystem/customer", true);
+    http.open("GET", "http://localhost:8080/pos_system/api/v1/customers", true);
     http.send();
-}*/
+}
 
-/*function loadTable(customerData) {
+function loadTable(customerData) {
     $("#customer-tbl-tbody").empty();
 
     customerData.forEach((item) => {
@@ -277,7 +277,7 @@ $("#customer-update").on('click', () => {
         </tr>`;
         $("#customer-tbl-tbody").append(record);
     });
-}*/
+}
 
 $("#customer-tbl-tbody").on('click', 'tr', function() {
     let customerId = $(this).find(".customer-id-value").text();
