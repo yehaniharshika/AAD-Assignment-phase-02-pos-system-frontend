@@ -210,9 +210,9 @@ $("#customer-update").on('click', () => {
 
 });
 
-/*
-/!*delete customer*!/
-$("#customer-delete").on('click', () => {
+
+/*delete customer*/
+/*$("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
 
     console.log("customer ID", customerIdValue);
@@ -242,11 +242,12 @@ $("#customer-delete").on('click', () => {
         }
     };
 
-    http.open("DELETE", `http://localhost:8081/posSystem/customer?customerId=${customerIdValue}`, true);
+    http.open("DELETE", `http://localhost:8080/pos_system/api/v1/customers=${customerIdValue}`, true);
     http.send();
-});
+});*/
 
-function fetchCustomerData() {
+
+/*function fetchCustomerData() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
@@ -261,9 +262,9 @@ function fetchCustomerData() {
     };
     http.open("GET", "http://localhost:8081/posSystem/customer", true);
     http.send();
-}
+}*/
 
-function loadTable(customerData) {
+/*function loadTable(customerData) {
     $("#customer-tbl-tbody").empty();
 
     customerData.forEach((item) => {
@@ -276,7 +277,7 @@ function loadTable(customerData) {
         </tr>`;
         $("#customer-tbl-tbody").append(record);
     });
-}
+}*/
 
 $("#customer-tbl-tbody").on('click', 'tr', function() {
     let customerId = $(this).find(".customer-id-value").text();
@@ -292,7 +293,7 @@ $("#customer-tbl-tbody").on('click', 'tr', function() {
     $("#email").val(email);
 });
 
-$("#customer-search").on('click', () => {
+/*$("#customer-search").on('click', () => {
     let customerSearchId = $("#customer-search-by-id").val();
 
     if (!customerSearchId) {
@@ -353,8 +354,8 @@ $("#customer-search").on('click', () => {
 
     http.open("GET", `http://localhost:8081/posSystem/customer?customerId=${customerSearchId}`, true);
     http.send();
-});
-*/
+});*/
+
 
 
 
