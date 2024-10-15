@@ -4,35 +4,28 @@ const mobileRegexPattern = new RegExp("^(070|071|072|074|075|076|077|078|038)\\d
 const nameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const addressRegexPattern = new RegExp("[0-9]{1,}\\/[A-Z]\\s[a-zA-Z]+$|[0-9]{1,}[/0-9]{1,}\\s([A-Za-z])\\w+");
 
-function generateCustomerId() {
-    // Fetch the last generated customer ID from localStorage, or start with "C00-000" if none exists.
-    let lastCustomerId = localStorage.getItem('lastCustomerId') || "C00-000";
-
-    // Extract the numeric part from the ID and increment it by 1.
-    let numericPart = parseInt(lastCustomerId.split("-")[1]);
-    let newCustomerId = "C00-" + ("000" + (numericPart + 1)).slice(-3);
-
-    // Store the new ID in localStorage so that the next time it's incremented correctly.
-    localStorage.setItem('lastCustomerId', newCustomerId);
-
-    // Set the generated ID in the customer-id input field.
-    document.getElementById('customer-Id').value = newCustomerId;
-}
 /*load when page is start*/
 window.addEventListener('load', () => {
     fetchCustomerId();
-    fetchCustomerData();
+    //fetchCustomerData();
 });
 
-function fetchCustomerId() {
-    fetch("http://localhost:8081/posSystem/customer?action=generateCustomerId")
-        .then(response => response.json())
-        .then(customerId => {
-            document.getElementById("customer-Id").value = customerId;
-            console.log(customerId);
+/*function fetchCustomerId() {
+    fetch("http://localhost:8080/pos_system/api/v1/customers/generate-next-customer-id")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json(); // Parse the response as JSON
         })
-        .catch(error => console.error("Error fetching customer Id ", error));
-}
+        .then(data => {
+            // Access the customerId from the returned object
+            document.getElementById("customer-Id").value = data.customerId;
+            console.log(data.customerId);
+        })
+        .catch(error => console.error("Error fetching customer Id:", error));
+}*/
+
 
 /*save customer*/
 $("#customer-save").click(function (){
@@ -108,7 +101,7 @@ $("#customer-save").click(function (){
                     'Customer saved successfully.',
                     'success'
                 );
-                fetchCustomerData();
+                //fetchCustomerData();
                 clearFields();
                 fetchCustomerId();
                 console.log("load tables saved click");
@@ -122,12 +115,13 @@ $("#customer-save").click(function (){
 
         }
     }
-    http.open("POST","http://localhost:8081/posSystem/customer",true);
+    http.open("POST","http://localhost:8080/pos_system/api/v1/customers",true);
     http.setRequestHeader("content-type","application/json");
     http.send(customerJson);
 });
 
 /*update customer*/
+/*
 $("#customer-update").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
     var customerNameValue = $('#customer-name').val();
@@ -220,7 +214,7 @@ $("#customer-update").on('click', () => {
 
 });
 
-/*delete customer*/
+/!*delete customer*!/
 $("#customer-delete").on('click', () => {
     var customerIdValue = $('#customer-Id').val();
 
@@ -363,6 +357,7 @@ $("#customer-search").on('click', () => {
     http.open("GET", `http://localhost:8081/posSystem/customer?customerId=${customerSearchId}`, true);
     http.send();
 });
+*/
 
 
 
