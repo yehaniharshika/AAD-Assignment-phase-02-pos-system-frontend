@@ -19,7 +19,6 @@ function fetchCustomerId() {
             return response.json(); //parse the response as JSON
         })
         .then(data => {
-            // Access the customerId from the returned object
             document.getElementById("customer-Id").value = data.customerId;
             console.log(data.customerId);
         })

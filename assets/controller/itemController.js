@@ -1,26 +1,30 @@
-/*
-/!*import {item_db} from "../db/db.js";*!/
+
 const itemNameRegexPattern = new RegExp("[A-Za-z\\s]{3,}");
 const  qtyOnHandRegexPattern = new RegExp("^\\d+$");
 
 
 // Call the function when the page loads or when you need to generate a new code
 window.addEventListener('load', () => {
-    fetchItemData();
+    //fetchItemData();
     fetchItemCode();
 });
 
 function fetchItemCode() {
-    fetch("http://localhost:8081/posSystem/item?action=generateItemCode")
-        .then(response => response.json())
-        .then(itemCode => {
-            document.getElementById("item-code").value = itemCode;
-            console.log(itemCode);
+    fetch("http://localhost:8080/pos_system/api/v1/items/generate-next-item-code")
+        .then(response => {
+            if (!response.ok){
+                throw new Error("response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("item-code").value = data.itemCode;
+            console.log(data.itemCode);
         })
         .catch(error => console.error("Error fetching item Code ", error));
 }
-/!*save item*!/
-$("#item-save").on('click', () => {
+/*save item*/
+/*$("#item-save").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     var itemNameValue = $('#item-name').val();
     var unitPriceValue = $('#unit-price').val();
@@ -92,8 +96,9 @@ $("#item-save").on('click', () => {
     http.open("POST","http://localhost:8081/posSystem/item",true);
     http.setRequestHeader("content-type","application/json");
     http.send(itemJson);
-});
+});*/
 
+/*
 /!*update item*!/
 $("#item-update").on('click', () => {
     var itemCodeValue = $('#item-code').val();
@@ -306,13 +311,13 @@ $("#item-search").on('click', () => {
     http.open("GET", `http://localhost:8081/posSystem/item?itemCode=${itemSearchCode}`, true);
     http.send();
 });
-
-
-
-
-
-
-
-
-
 */
+
+
+
+
+
+
+
+
+
