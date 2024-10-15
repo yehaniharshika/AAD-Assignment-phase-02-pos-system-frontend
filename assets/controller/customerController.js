@@ -10,13 +10,13 @@ window.addEventListener('load', () => {
     //fetchCustomerData();
 });
 
-/*function fetchCustomerId() {
+function fetchCustomerId() {
     fetch("http://localhost:8080/pos_system/api/v1/customers/generate-next-customer-id")
         .then(response => {
             if (!response.ok) {
-                throw new Error("Network response was not ok");
+                throw new Error("response was not ok");
             }
-            return response.json(); // Parse the response as JSON
+            return response.json(); //parse the response as JSON
         })
         .then(data => {
             // Access the customerId from the returned object
@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
             console.log(data.customerId);
         })
         .catch(error => console.error("Error fetching customer Id:", error));
-}*/
+}
 
 
 /*save customer*/
