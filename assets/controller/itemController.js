@@ -104,8 +104,8 @@ function clearFields() {
     $("#unit-price").val('');
     $("#qty-on-hand").val('');
 }
-/*
-/!*update item*!/
+
+/*update item*/
 $("#item-update").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     var itemNameValue = $('#item-name').val();
@@ -157,7 +157,7 @@ $("#item-update").on('click', () => {
                     'Item updated successfully.',
                     'success'
                 )
-                fetchItemData();
+                //fetchItemData();
                 clearFields();
                 fetchItemCode();
             } else {
@@ -168,11 +168,12 @@ $("#item-update").on('click', () => {
             }
         }
     };
-    http.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
+    http.open("PUT", `http://localhost:8080/pos_system/api/v1/items/${itemCodeValue}`, true);
     http.setRequestHeader("content-type", "application/json");
     http.send(itemJson);
 });
 
+/*
 $("#item-delete").on('click', () => {
     var itemCodeValue = $('#item-code').val();
     console.log("item code: ",itemCodeValue);
