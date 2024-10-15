@@ -224,21 +224,21 @@ function fetchItemData() {
     http.send();
 }
 
-/*function loadTable(itemData) {
-
-    $("#item-tbl-tbody").empty();
-
-    itemData.forEach((item) => {
-
-        let record = `<tr>
-                <td class="item-code-value">${item.itemCode}</td>
-                <td class="item-name-value">${item.itemName}</td>
-                <td class="item-unitPrice-value">${item.unitPrice}</td>
-                <td class="qty-on-hand-value">${item.qtyOnHand}</td>
-            </tr>`;
-        $("#item-tbl-tbody").append(record);
-    });
-}
+// function loadTable(itemData) {
+//
+//     $("#item-tbl-tbody").empty();
+//
+//     itemData.forEach((item) => {
+//
+//         let record = `<tr>
+//                 <td class="item-code-value">${item.itemCode}</td>
+//                 <td class="item-name-value">${item.itemName}</td>
+//                 <td class="item-unitPrice-value">${item.unitPrice}</td>
+//                 <td class="qty-on-hand-value">${item.qtyOnHand}</td>
+//             </tr>`;
+//         $("#item-tbl-tbody").append(record);
+//     });
+// }
 
 
 $("#item-tbl-tbody").on('click', 'tr', function() {
@@ -252,7 +252,7 @@ $("#item-tbl-tbody").on('click', 'tr', function() {
     $("#unit-price").val(unitPrice);
     $("#qty-on-hand").val(qtyOnHand);
 
-});*/
+});
 
 /*
 /!*search item*!/
