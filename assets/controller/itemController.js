@@ -173,15 +173,25 @@ $("#item-update").on('click', () => {
     http.send(itemJson);
 });
 
-/*
+
 $("#item-delete").on('click', () => {
     var itemCodeValue = $('#item-code').val();
+
+    if (!itemCodeValue) {
+        Swal.fire(
+            'Input Required',
+            'Please enter a valid Item code to delete.',
+            'warning'
+        );
+        return;
+    }
+
     console.log("item code: ",itemCodeValue);
 
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4) {
-            if (http.status === 200) {
+            if (http.status === 200 || http.status === 204) {
                 console.log("item deleted successfully");
                 Swal.fire(
                     'Deleted Successfully!',
@@ -189,6 +199,7 @@ $("#item-delete").on('click', () => {
                     'success'
                 );
                 fetchItemData();
+                clearFields();
                 fetchItemCode();
             } else {
                 console.log("Failed to delete");
@@ -202,9 +213,9 @@ $("#item-delete").on('click', () => {
         }
     };
 
-    http.open("DELETE", `http://localhost:8081/posSystem/item?itemCode=${itemCodeValue}`, true);
+    http.open("DELETE", `http://localhost:8080/pos_system/api/v1/items/${itemCodeValue}`, true);
     http.send();
-});*/
+});
 
 
 function fetchItemData() {
@@ -310,7 +321,6 @@ $("#item-search").on('click', () => {
             }
         }
     };
-
     http.open("GET", `http://localhost:8080/pos_system/api/v1/items/${itemSearchCode}`, true);
     http.send();
 });
