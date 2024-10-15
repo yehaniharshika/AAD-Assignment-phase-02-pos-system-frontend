@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     //loadCustomerIDs();
     //loadItemCodes();
     setOrderDate();
-    //fetchOrderId();
+    fetchOrderId();
     //fetchOrderData();
 });
 
@@ -15,15 +15,20 @@ function setOrderDate() {
     document.getElementById('order-date').value = today;
 }
 
-/*function fetchOrderId() {
-    fetch("http://localhost:8081/posSystem/order?action=generateOrderId")
-        .then(response => response.json())
-        .then(orderId => {
-            document.getElementById("order-id").value = orderId;
-            console.log(orderId);
+function fetchOrderId() {
+    fetch("http://localhost:8080/pos_system/api/v1/orders/generate-next-order-id")
+        .then(response => {
+            if (!response.ok){
+                throw new Error("response was not ok");
+            }
+            return response.json()
+        })
+        .then(data => {
+            document.getElementById("order-id").value = data.orderId;
+            console.log(data.orderId);
         })
         .catch(error => console.error("Error fetching order ID:", error));
-}*/
+}
 
 /*function loadItemCodes() {
     const http = new XMLHttpRequest();
