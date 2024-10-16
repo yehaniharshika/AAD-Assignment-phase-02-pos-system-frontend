@@ -45,7 +45,7 @@ function loadItemCodes() {
     http.send();
 }
 
-/*document.getElementById('itemCodeOption').addEventListener('change', function() {
+document.getElementById('itemCodeOption').addEventListener('change', function() {
     const selectedItemCode = this.value;
     const selectedItem = itemData.find(item => item.itemCode === selectedItemCode);
 
@@ -54,7 +54,7 @@ function loadItemCodes() {
         document.getElementById('set-order-form-item-price').value = selectedItem.unitPrice;
         document.getElementById('set-item-qty-on-hand').value = selectedItem.qtyOnHand;
     }
-});*/
+});
 
 /*function loadCustomerIDs() {
     const http = new XMLHttpRequest();
