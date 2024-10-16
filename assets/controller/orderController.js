@@ -4,7 +4,7 @@ let items = [];
 
 window.addEventListener('load', () => {
     //loadCustomerIDs();
-    //loadItemCodes();
+    loadItemCodes();
     setOrderDate();
     fetchOrderId();
     //fetchOrderData();
@@ -30,7 +30,7 @@ function fetchOrderId() {
         .catch(error => console.error("Error fetching order ID:", error));
 }
 
-/*function loadItemCodes() {
+function loadItemCodes() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
@@ -41,11 +41,11 @@ function fetchOrderId() {
             });
         }
     };
-    http.open("GET", "http://localhost:8081/posSystem/item", true);
+    http.open("GET", "http://localhost:8080/pos_system/api/v1/items", true);
     http.send();
 }
 
-document.getElementById('itemCodeOption').addEventListener('change', function() {
+/*document.getElementById('itemCodeOption').addEventListener('change', function() {
     const selectedItemCode = this.value;
     const selectedItem = itemData.find(item => item.itemCode === selectedItemCode);
 
