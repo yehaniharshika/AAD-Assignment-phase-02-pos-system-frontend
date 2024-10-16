@@ -81,7 +81,7 @@ document.getElementById('custIdOption').addEventListener('change', function() {
     }
 });
 
-/*document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+document.getElementById('add-to-cart-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
     const itemName = document.getElementById('set-order-form-item-name').value;
     const itemPrice = parseFloat(document.getElementById('set-order-form-item-price').value); // changed from unitPrice to itemPrice
@@ -126,7 +126,7 @@ document.getElementById('custIdOption').addEventListener('change', function() {
         }
     };
 
-    xhr.open("PUT", `http://localhost:8081/posSystem/item?itemCode=${itemCode}`, true);
+    xhr.open("PUT", `http://localhost:8080/pos_system/api/v1/items/${itemCode}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         qtyOnHand: qtyOnHand - qty,
@@ -231,7 +231,7 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
         items: items
     };
 
-    fetch('http://localhost:8081/posSystem/order', {
+    fetch('http://localhost:8080/pos_system/api/v1/orders', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -242,7 +242,7 @@ document.getElementById('btn-purchase').addEventListener('click', function() {
         .then(message => {
             Swal.fire(
                 'Save Successfully!',
-                'Customer saved successfully.',
+                'order saved successfully.',
                 'success'
             );
             console.log("order success");
@@ -281,7 +281,7 @@ function fetchOrderData() {
             }
         }
     };
-    http.open("GET", "http://localhost:8081/posSystem/order", true);
+    http.open("GET", "http://localhost:8080/pos_system/api/v1/orders", true);
     http.send();
 }
 
@@ -341,9 +341,7 @@ $("#order-search").on('click',() =>{
                     'success'
                 );
 
-                setTimeout(() =>{
-                    clearFields();
-                },10000);
+
                 fetchOrderId();
                 setOrderDate();
             } else {
@@ -369,9 +367,9 @@ $("#order-search").on('click',() =>{
         }
     };
 
-    http.open("GET", `http://localhost:8081/posSystem/order?orderId=${orderSearchId}`, true);
+    http.open("GET", `http://localhost:8080/pos_system/api/v1/orders/${orderSearchId}`, true);
     http.send();
-})*/
+});
 
 
 
