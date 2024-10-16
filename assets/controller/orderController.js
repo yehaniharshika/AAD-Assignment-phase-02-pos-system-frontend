@@ -71,7 +71,7 @@ function loadCustomerIDs() {
     http.send();
 }
 
-/*document.getElementById('custIdOption').addEventListener('change', function() {
+document.getElementById('custIdOption').addEventListener('change', function() {
     const selectedCustomerId = this.value;
     const selectedCustomer = customerData.find(customer => customer.customerId === selectedCustomerId);
 
@@ -79,7 +79,7 @@ function loadCustomerIDs() {
         document.getElementById('set-customer-name').value = selectedCustomer.name;
         document.getElementById('set-customer-email').value = selectedCustomer.email;
     }
-});*/
+});
 
 /*document.getElementById('add-to-cart-btn').addEventListener('click', function() {
     const itemCode = document.getElementById('itemCodeOption').value;
