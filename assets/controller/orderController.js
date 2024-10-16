@@ -3,7 +3,7 @@ let itemData = [];
 let items = [];
 
 window.addEventListener('load', () => {
-    //loadCustomerIDs();
+    loadCustomerIDs();
     loadItemCodes();
     setOrderDate();
     fetchOrderId();
@@ -56,7 +56,7 @@ document.getElementById('itemCodeOption').addEventListener('change', function() 
     }
 });
 
-/*function loadCustomerIDs() {
+function loadCustomerIDs() {
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === 4 && http.status === 200) {
@@ -67,9 +67,9 @@ document.getElementById('itemCodeOption').addEventListener('change', function() 
             });
         }
     };
-    http.open("GET", "http://localhost:8081/posSystem/customer", true);
+    http.open("GET", "http://localhost:8080/pos_system/api/v1/customers", true);
     http.send();
-}*/
+}
 
 /*document.getElementById('custIdOption').addEventListener('change', function() {
     const selectedCustomerId = this.value;
