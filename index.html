@@ -480,33 +480,26 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<!-- jsPDF autoTable plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 
-<!-- Your generatePDF function -->
+
 <script>
     function generatePDF() {
-        // Load the jsPDF library
+        //load the jsPDF library
         const { jsPDF } = window.jspdf;
 
-        // Create a new instance of jsPDF
+        //create a new instance of jsPDF
         const doc = new jsPDF();
 
-        // Add a title at the top
-        doc.setFontSize(15);
-        doc.text("FOOD-MART - Order Details", 105, 20, { align: 'center' }); // Title at the center of the page
-
-
-        // Get the table HTML
         const table = document.getElementById("item-details-table");
 
-        // Extract the table headers
+        //extract the table headers
         const headers = [];
         for (let headerCell of table.querySelectorAll("thead th")) {
             headers.push(headerCell.innerText);
         }
 
-        // Extract the table data
+        //extract the table data
         const data = [];
         for (let row of table.querySelectorAll("tbody tr")) {
             const rowData = [];
