@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     loadItemCodes();
     setOrderDate();
     fetchOrderId();
-    //fetchOrderData();
+    fetchOrderData();
 });
 
 function setOrderDate() {
@@ -293,7 +293,7 @@ function loadTable(orderData) {
         let record = `<tr>
             <td>${order.orderId}</td>
             <td>${order.orderDate}</td>
-            <td>${order.customerId}</td>
+            <td>${order.customer.customerId}</td>
             <td>${order.total}</td>
             <td>${order.discount}</td>
             <td>${order.subTotal}</td>

@@ -448,8 +448,9 @@
             <div class="text-center gradient-text">
                 <h3>Order Details Form</h3>
             </div>
+            <button onclick="generatePDF()" type="button" class="btn btn-primary">Generate Report</button>
             <div id="form">
-                <div class="col table1">
+                <div class="col table1 order-detail" >
                     <table class="table" id="item-details-table">
                         <thead class="table-primary">
                         <tr>
@@ -478,6 +479,62 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- jsPDF autoTable plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Your generatePDF function -->
+<script>
+    function generatePDF() {
+        // Load the jsPDF library
+        const { jsPDF } = window.jspdf;
+
+        // Create a new instance of jsPDF
+        const doc = new jsPDF();
+
+        // Add a title at the top
+        doc.setFontSize(15);
+        doc.text("FOOD-MART - Order Details", 105, 20, { align: 'center' }); // Title at the center of the page
+
+
+        // Get the table HTML
+        const table = document.getElementById("item-details-table");
+
+        // Extract the table headers
+        const headers = [];
+        for (let headerCell of table.querySelectorAll("thead th")) {
+            headers.push(headerCell.innerText);
+        }
+
+        // Extract the table data
+        const data = [];
+        for (let row of table.querySelectorAll("tbody tr")) {
+            const rowData = [];
+            for (let cell of row.querySelectorAll("td")) {
+                rowData.push(cell.innerText);
+            }
+            data.push(rowData);
+        }
+
+        // Add the table using autoTable plugin
+        doc.autoTable({
+            startY: 40, // Starts after the title
+            head: [headers],
+            body: data,
+            theme: 'grid', // Use 'grid' to add borders around all cells
+            headStyles: { fillColor: [41, 128, 185] }, // Custom header color (blue)
+            styles: {
+                fontSize: 9,
+                cellPadding: 3
+            },
+            tableLineColor: [0, 0, 0], // Border color (black)
+            tableLineWidth: 0.75 // Border thickness
+        });
+
+        // Save the PDF document
+        doc.save("item-details-report.pdf");
+    }
+</script>
 <script>
     AOS.init();
 </script>

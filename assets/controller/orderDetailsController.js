@@ -1,41 +1,31 @@
 /*
-import { order_db } from "../db/db.js";
+ function generatePDF() {
+    // Load the jsPDF library
+    const { jsPDF } = window.jspdf;
 
-export function populateTableOrderDetails() {
-    const tbody = $('#order-details-section #item-details-table tbody');
-    tbody.empty();
-    order_db.forEach(orderDetails => {
-        tbody.append(
-            `<tr>
-                <th scope="row">${orderDetails.orderId}</th>
-                <td>${orderDetails.orderDate}</td>
-                <td>${orderDetails.customerId}</td>
-                <td>${orderDetails.total}</td>
-                <td>${orderDetails.discount}</td>
-                <td>${calculateSubtotal(orderDetails.total, orderDetails.discount)}</td>
-                <td>${orderDetails.cash}</td>
-                <td>${calculateBalance(orderDetails.cash, orderDetails.total, orderDetails.discount)}</td>                
-            </tr>`
-        );
-    });
+    // Create a new instance of jsPDF
+    const doc = new jsPDF();
+
+    // Get the HTML table
+    const table = document.getElementById("item-details-table");
+
+    // Initialize the content for the PDF
+    let content = "";
+
+    // Loop through the table rows
+    for (let row of table.rows) {
+    let rowContent = "";
+    for (let cell of row.cells) {
+    rowContent += cell.innerText + "\t"; // Add cell content with tabs in between
+}
+    content += rowContent + "\n"; // Add a new line at the end of each row
 }
 
-function calculateSubtotal(total, discount) {
-    const discountValue = parseFloat(discount) || 0;
-    const subtotal = total - (total * (discountValue / 100));
-    return subtotal.toFixed(2);
-}
+    // Add the content to the PDF document
+    doc.text(content, 10, 10);
 
-function calculateBalance(cash, total, discount) {
-    const discountValue = parseFloat(discount) || 0;
-    const subtotal = calculateSubtotal(total, discount);
-    const balance = cash - subtotal;
-    return balance.toFixed(2);
+    // Save the PDF document
+    doc.save("item-details-report.pdf");
 }
-
-// Initial population of the order details table when the page loads
-$(document).ready(() => {
-    populateTableOrderDetails();
-});
 
 */
