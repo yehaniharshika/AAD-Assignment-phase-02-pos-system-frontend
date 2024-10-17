@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=26&pause=1000&background=1511D700&width=435&lines=FOOD-MART+POS+system+frontend" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Ubuntu&weight=1200&size=45&pause=1000&color=1F8DF7&background=1511D700&width=1000&height=80&lines=%22FOODMART%22+-++POS+system+frontend++%F0%9F%8D%A9%F0%9F%A7%8B%F0%9F%8D%92" alt="Typing SVG" /></a>
 </h1>
 
 
