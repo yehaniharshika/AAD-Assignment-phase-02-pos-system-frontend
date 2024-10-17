@@ -3,7 +3,7 @@
 </h1>
 
 
-# FOODMART pos-system Frontend
+## FOODMART pos-system Frontend
 **"FOOD-MART"** is a convenient  store specializing in a wide variety of fresh vegetables and grocery items. It offers an intuitive interface for managing customers,managing items,managing customer orders, and viewing detailed order histories,ensuring a seamless shopping experience for users.
 
 ## Technologies Used
